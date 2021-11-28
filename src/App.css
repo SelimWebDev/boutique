@@ -1,0 +1,44 @@
+.Home-page {
+  text-align: center;
+}
+
+.Banner-logo {
+  height: 40vmin;
+  color: gold;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Banner-logo {
+    animation: Banner-logo-spin infinite 5s linear;
+  }
+}
+
+.Header {
+  background-color: grey;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Banner {
+  background-color: #282c34;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+@keyframes Banner-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
