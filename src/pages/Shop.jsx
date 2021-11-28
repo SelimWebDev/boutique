@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Header from '../components/Header.jsx';
 import ShoppingList from '../components/ShoppingList.jsx'
 import Cart from '../components/Cart'
 import Article from '../components/Article.jsx';
@@ -22,7 +21,6 @@ function Shop(){
 
     return (
         <div className="Shop-page">
-            <Header></Header>
             <Cart cart={cart} updateCart={updateCart}></Cart>
             <ShoppingList>
                 {articleList.map(article => (
