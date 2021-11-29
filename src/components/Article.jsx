@@ -1,22 +1,34 @@
 import { useState } from "react"
 import PropTypes from "prop-types"
 
-function Article({id, name, price, cart, updateCart}){
+function Article({article, totalQuant, updateTotalQuant, updateSelectedArticles, selectedArticles}){
     const [quantity, updateQuandity] = useState(0);
 
     function handleChange(e) {
-      
-      updateQuandity(parseInt(e.target.value));
+      e = parseInt(e.target.value)
+      updateQuandity(e);
     }
 
-    function  handleSubmit() {
-      updateCart(cart + quantity)
+    function  handleSubmit() {   
+      updateTotalQuant(totalQuant + quantity)    
+      if (selectedArticles.length !== 0){                   
+        updateSelectedArticles([...selectedArticles,{
+          id: article.id,
+          quantity: quantity
+        }])
+      }
+      else {
+        updateSelectedArticles([{
+          id: article.id,
+          quantity: quantity
+        }])
+      }
     }
 
     return (
-      <li key={id}>
-          <span>Moteur : {name}</span>
-          <span>Prix {price}</span>
+      <li key={article.id}>
+          <span>Moteur : {article.name}</span>
+          <span>Prix {article.price}</span>
           <label htmlFor="quantity">Quantité</label>
           <input id ="quantity" type="number" onChange={(e) => handleChange(e)}></input>
           <button onClick={() => handleSubmit()} >Ajouter</button>
@@ -28,7 +40,7 @@ Article.prototype = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  cart: PropTypes.number.isRequired,
+  cart: PropTypes.array.isRequired,
   updateCart: PropTypes.func.isRequired
 }
 

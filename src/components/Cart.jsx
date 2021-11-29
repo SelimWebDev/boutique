@@ -1,12 +1,23 @@
-function Cart({cart, updateCart}) {
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react/cjs/react.development";
+
+function Cart({totalQuant, updateTotalQuant, updateSelectedArticles, selectedArticles}) {
+
+    function handleClick(){
+        updateSelectedArticles({})
+        updateTotalQuant(0)
+    }
+
     return (
         <div className='lmj-cart'>
             <h2>Panier</h2>
             <div>
                 <i className="fas fa-bicycle"></i>
-                {cart}
+                {totalQuant}
             </div>
-            <button onClick={() => updateCart(0)}>Vider le Panier</button>
+            <button onClick={ () => handleClick() } >Vider le Panier</button>
+            <Link to="/mycart">Mon pannier</Link>
         </div>
     )
 }

@@ -5,3 +5,5 @@ function MyCart(cart){
         </div>
     )
 }
+
+export default MyCart;
