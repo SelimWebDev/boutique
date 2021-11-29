@@ -1,23 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ShoppingList from '../components/ShoppingList.jsx'
 import Cart from '../components/Cart'
 import Article from '../components/Article.jsx';
 
 function Shop(){
     const [cart, updateCart] = useState(0);
-    const [articleList, updateList] = useState([
-        {
-            id : 0,
-            name : "vélo 500W",
-            price : "250"
-        },
-        {
-            id : 1,
-            name : "vélo 1000W",
-            price : 500
-        }
-    ]);
+    const [articleList, updateArticleList] = useState([]);
 
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/articles`)
+             .then((response) => response.json())
+             .then((articles) => updateArticleList(articles))
+             .catch((error) => console.log(error))         
+     }, [])
 
     return (
         <div className="Shop-page">

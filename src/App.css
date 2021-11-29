@@ -1,5 +1,12 @@
-.Home-page {
-  text-align: center;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .Banner-logo {
@@ -13,15 +20,14 @@
     animation: Banner-logo-spin infinite 5s linear;
   }
 }
-
-.Header {
-  background-color: grey;
-  height: 5vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@keyframes Banner-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
 .Banner {
   background-color: #282c34;
   height: 95vh;
@@ -33,12 +39,16 @@
   color: white;
 }
 
-
-@keyframes Banner-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Header {
+  background-color: grey;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.Home-page {
+  text-align: center;
+}
+
+/*# sourceMappingURL=App.css.map */
