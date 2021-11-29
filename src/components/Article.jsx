@@ -14,7 +14,7 @@ function Article({article, cart, updateCart}){
       if (cart.totalQuant === 0){
         updateCart({
           items: [{
-            id: article.id,
+            item: article,
             quantity: quantity
           }],
           totalQuant: quantity
@@ -22,7 +22,7 @@ function Article({article, cart, updateCart}){
       } else {
         updateCart({
           items: [...cart.items,{
-            id: article.id,
+            item: article,
             quantity: quantity
           }],
           totalQuant: cart.totalQuant+quantity

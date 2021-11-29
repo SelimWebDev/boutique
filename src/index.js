@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Home from './pages/Home.jsx';
 import Shop from './pages/Shop';
-import ShoppingList from './components/ShoppingList';
-import MyCart from './components/MyCart';
 
 import reportWebVitals from './reportWebVitals';
 import {
@@ -21,10 +19,7 @@ ReactDOM.render(
       <Header />
       <Routes>
           <Route index element={<Home />} />
-          <Route path="shop" element={<Shop/>}>
-            <Route path="shopping" element={<ShoppingList/>} />
-            <Route path="mycart" element={<MyCart/>} />
-          </Route>  
+          <Route path="shop/*" element={<Shop/>} /> 
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
