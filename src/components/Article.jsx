@@ -1,7 +1,7 @@
 import { useState } from "react"
 import PropTypes from "prop-types"
 
-function Article({article, totalQuant, updateTotalQuant, updateSelectedArticles, selectedArticles}){
+function Article({article, cart, updateCart}){
     const [quantity, updateQuandity] = useState(0);
 
     function handleChange(e) {
@@ -9,19 +9,24 @@ function Article({article, totalQuant, updateTotalQuant, updateSelectedArticles,
       updateQuandity(e);
     }
 
-    function  handleSubmit() {   
-      updateTotalQuant(totalQuant + quantity)    
-      if (selectedArticles.length !== 0){                   
-        updateSelectedArticles([...selectedArticles,{
-          id: article.id,
-          quantity: quantity
-        }])
-      }
-      else {
-        updateSelectedArticles([{
-          id: article.id,
-          quantity: quantity
-        }])
+    function  handleSubmit() {
+
+      if (cart.totalQuant === 0){
+        updateCart({
+          items: [{
+            id: article.id,
+            quantity: quantity
+          }],
+          totalQuant: quantity
+        })
+      } else {
+        updateCart({
+          items: [...cart.items,{
+            id: article.id,
+            quantity: quantity
+          }],
+          totalQuant: cart.totalQuant+quantity
+        })
       }
     }
 

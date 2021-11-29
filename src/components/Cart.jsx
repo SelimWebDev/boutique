@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 
-function Cart({totalQuant, updateTotalQuant, updateSelectedArticles, selectedArticles}) {
+function Cart({cart, updateCart}) {
 
     function handleClick(){
-        updateSelectedArticles({})
-        updateTotalQuant(0)
+        updateCart({
+            items: [],
+            totalQuant: 0
+        })
     }
 
     return (
@@ -14,7 +16,7 @@ function Cart({totalQuant, updateTotalQuant, updateSelectedArticles, selectedArt
             <h2>Panier</h2>
             <div>
                 <i className="fas fa-bicycle"></i>
-                {totalQuant}
+                {cart.totalQuant}
             </div>
             <button onClick={ () => handleClick() } >Vider le Panier</button>
             <Link to="/mycart">Mon pannier</Link>

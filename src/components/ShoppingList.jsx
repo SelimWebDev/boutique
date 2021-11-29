@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import Article from '../components/Article.jsx';
 
-function ShoppingList({totalQuant, updateTotalQuant, updateSelectedArticles, selectedArticles}) {
+function ShoppingList({cart, updateCart}) {
 
     const [articleList, updateArticleList] = useState([]);
 
@@ -18,7 +18,7 @@ function ShoppingList({totalQuant, updateTotalQuant, updateSelectedArticles, sel
             <div>
                 <ul className='lmj-article-list'>
                 {articleList.map(article => (
-                    <Article article={article} totalQuant={totalQuant} updateTotalQuant={updateTotalQuant} updateSelectedArticles={updateSelectedArticles} selectedArticles={selectedArticles} ></Article>
+                    <Article article={article} cart={cart} updateCart={updateCart} ></Article>
                 ))}
                 </ul>
             </div>
