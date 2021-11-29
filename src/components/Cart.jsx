@@ -1,6 +1,4 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
 
 function Cart({cart, updateCart}) {
 
@@ -19,7 +17,7 @@ function Cart({cart, updateCart}) {
                 {cart.totalQuant}
             </div>
             <button onClick={ () => handleClick() } >Vider le Panier</button>
-            <Link to="/mycart">Mon pannier</Link>
+            <Link to="/shop/mycart">Mon pannier</Link>
         </div>
     )
 }

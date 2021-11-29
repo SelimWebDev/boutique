@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import Header from './components/Header';
 import Home from './pages/Home.jsx';
 import Shop from './pages/Shop';
-import MyCart from './pages/MyCart';
+import ShoppingList from './components/ShoppingList';
+import MyCart from './components/MyCart';
+
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
-import Header from './components/Header';
-
 
 
 ReactDOM.render(
@@ -19,8 +21,10 @@ ReactDOM.render(
       <Header />
       <Routes>
           <Route index element={<Home />} />
-          <Route path="shop" element={<Shop/>}/>
-          <Route path="mycart" element={<MyCart/>}/>
+          <Route path="shop" element={<Shop/>}>
+            <Route path="shopping" element={<ShoppingList/>} />
+            <Route path="mycart" element={<MyCart/>} />
+          </Route>  
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

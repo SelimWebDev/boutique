@@ -1,11 +1,11 @@
 import { useState } from 'react';
+
 import ShoppingList from '../components/ShoppingList.jsx'
 import Cart from '../components/Cart'
-
+import MyCart from '../components/MyCart'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function Shop(){
-    const [totalQuant, updateTotalQuant] = useState(0);
-    const [selectedArticles, updateSelectedArticles] = useState([])
 
     const [cart, updateCart] = useState({
         items: [],
@@ -14,8 +14,12 @@ function Shop(){
 
     return (
         <div className="Shop-page">
+            <div>PageShop</div>
             <Cart cart={cart} updateCart={updateCart} />
-            <ShoppingList cart={cart} updateCart={updateCart} />
+                <Routes>
+                    <Route path="shopping" element={<ShoppingList cart={cart} updateCart={updateCart}/>} />
+                    <Route path="mycart" element={<MyCart cart={cart} updateCart={updateCart}/>} />
+                </Routes>
         </div>
     )
 }
