@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ShoppingList from '../components/ShoppingList.jsx'
 import Cart from '../components/Cart'
 import MyCart from '../components/MyCart'
+import DetailledArticle from '../components/DetailledArticle'
 import { Routes, Route } from 'react-router-dom';
 
 function Shop(){
@@ -14,11 +15,11 @@ function Shop(){
 
     return (
         <div className="Shop-page">
-            <div>PageShop</div>
             <Cart cart={cart} updateCart={updateCart} />
             <Routes>
                 <Route path="shopping" element={<ShoppingList cart={cart} updateCart={updateCart}/>} />
-                <Route path="mycart" element={<MyCart cart={cart} />} />
+                <Route path="shopping/:id" element={<DetailledArticle cart={cart} updateCart={updateCart}/>} />
+                <Route path="mycart" element={<MyCart cart={cart} updateCart={updateCart} />} />
             </Routes>
         </div>
     )

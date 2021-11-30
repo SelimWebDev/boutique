@@ -1,7 +1,30 @@
 .Header {
-    background-color: grey;
     height: 5vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+
+    & .top-bar {
+      background-color: grey;
+      width: 100%;
+      height: 2px;
+    }
+
+    & nav {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        & a {
+          text-decoration: none;
+          color: black;
+        }
+        
+        & a:hover {
+          transform: scale(1.5);
+        }
+    }
   }

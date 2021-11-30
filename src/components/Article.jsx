@@ -1,52 +1,25 @@
-import { useState } from "react"
 import PropTypes from "prop-types"
+import { Link } from "react-router-dom";
 
-function Article({article, cart, updateCart}){
-    const [quantity, updateQuandity] = useState(0);
-
-    function handleChange(e) {
-      e = parseInt(e.target.value)
-      updateQuandity(e);
-    }
-
-    function  handleSubmit() {
-
-      if (cart.totalQuant === 0){
-        updateCart({
-          items: [{
-            item: article,
-            quantity: quantity
-          }],
-          totalQuant: quantity
-        })
-      } else {
-        updateCart({
-          items: [...cart.items,{
-            item: article,
-            quantity: quantity
-          }],
-          totalQuant: cart.totalQuant+quantity
-        })
-      }
-    }
-
+function Article({article}){
     return (
-      <li key={article.id}>
-          <span>Moteur : {article.name}</span>
-          <span>Prix {article.price}</span>
-          <label htmlFor="quantity">Quantité</label>
-          <input id ="quantity" type="number" onChange={(e) => handleChange(e)}></input>
-          <button onClick={() => handleSubmit()} >Ajouter</button>
+      <li className="article" key={article.id}>
+        <Link to={"./" + article.id}>
+          <div className="img-wrapper">
+              <img alt={article.name} src={"http://localhost:3001/images/" + article.imgUrl}/>
+          </div>
+            <div className="article-desc">
+              <span>Moteur : {article.name}</span>
+              <span>Prix {article.price}</span>
+              <label htmlFor="quantity">Quantité</label>
+            </div>
+          </Link>
       </li>
     )   
 }
 
 Article.prototype = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  cart: PropTypes.array.isRequired,
-  updateCart: PropTypes.func.isRequired
+  
 }
 
 export default Article

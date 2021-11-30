@@ -14,9 +14,9 @@ function ShoppingList({cart, updateCart}) {
 
     return (
         <div className='Shopping-list'>
-            <h2>Article</h2>
+            <h2>Boutique</h2>
             <div>
-                <ul className='lmj-article-list'>
+                <ul className='article-list'>
                 {articleList.map(article => (
                     <Article article={article} cart={cart} updateCart={updateCart} ></Article>
                 ))}
