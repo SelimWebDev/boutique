@@ -1,29 +1,32 @@
-import {useEffect, useState} from 'react'
 import Article from '../components/Article.jsx';
+import useGetReq from '../utils/hooks/index.jsx';
+import Loader from './Loader.jsx';
 
 function ShoppingList({cart, updateCart}) {
+    
+    const { isLoading, data } = useGetReq(`http://localhost:3001/api/articles`)
+    const articleList = Object.values(data)
+    const listLoading = isLoading
 
-    const [articleList, updateArticleList] = useState([]);
-
-    useEffect(() => {
-        fetch(`http://localhost:3001/api/articles`)
-             .then((response) => response.json())
-             .then((articles) => updateArticleList(articles))
-             .catch((error) => console.log(error))         
-     }, [])
-
-    return (
-        <div className='Shopping-list'>
-            <h2>Boutique</h2>
-            <div>
-                <ul className='article-list'>
-                {articleList.map(article => (
-                    <Article article={article} cart={cart} updateCart={updateCart} ></Article>
-                ))}
-                </ul>
+    if(listLoading){
+        return (
+            <Loader />
+        )
+    } else {
+        return (
+            <div className='Shopping-list'>
+                <h2>Boutique</h2>
+                <div>
+                    <ul className='article-list'>
+                    {articleList.map(article => (
+                        <Article article={article} cart={cart} updateCart={updateCart} ></Article>
+                    ))}
+                    </ul>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    
 }
 
 export default ShoppingList;

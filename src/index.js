@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Header from './components/Header';
 import Home from './pages/Home.jsx';
 import Shop from './pages/Shop';
+import Auth from './pages/Auth';
 
 import reportWebVitals from './reportWebVitals';
 import {
@@ -19,7 +20,8 @@ ReactDOM.render(
       <Header />
       <Routes>
           <Route index element={<Home />} />
-          <Route path="shop/*" element={<Shop/>} /> 
+          <Route path="shop/*" element={<Shop/>} />
+          <Route path="auth/*" element={<Auth/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

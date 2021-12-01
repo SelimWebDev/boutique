@@ -1,9 +1,9 @@
-import Banner  from '../components/Banner';
+import Loader  from '../components/Loader';
 
 function Home(){
     return (
         <div className="Home-page">
-            <Banner title="Voltrider"></Banner>
+            <Loader title="Voltrider" />
         </div>
     )
 }
